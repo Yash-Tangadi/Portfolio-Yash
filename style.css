@@ -1,0 +1,302 @@
+:root {
+    /* TRUE DARK MODE - Pitch black background */
+    --bg-color: #000000; 
+    --text-main: #ffffff; /* Bright white text for contrast */
+    --text-muted: #86868b; /* Apple standard muted gray */
+    --accent: #2997ff; /* Vivid Apple Blue */
+    --nav-bg: rgba(0, 0, 0, 0.75); /* Dark translucent nav */
+    
+    /* Subtle glassmorphism for cards */
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    /* Font smoothing is crucial on pure black backgrounds */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Constant Dynamic Background Effect (Updated for Dark Mode) --- */
+.ambient-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    background-color: var(--bg-color);
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px); /* Heavy blur */
+    opacity: 0.35; /* Slightly less opaque to not overpower the text */
+    animation: floatOrb 20s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+.orb-1 {
+    width: 50vw;
+    height: 50vw;
+    background: rgba(41, 151, 255, 0.2); /* Deeper Blue glow */
+    top: -10vh;
+    left: -10vw;
+}
+
+.orb-2 {
+    width: 40vw;
+    height: 40vw;
+    background: rgba(134, 134, 139, 0.15); /* Muted gray glow */
+    bottom: -20vh;
+    right: -10vw;
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+.orb-3 {
+    width: 30vw;
+    height: 30vw;
+    background: rgba(255, 255, 255, 0.03); /* Extremely soft white highlight */
+    top: 40vh;
+    left: 40vw;
+    animation-delay: -10s;
+    animation-duration: 30s;
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(15vw, 15vh) scale(1.2); }
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 48px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px); /* Stronger blur */
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: -0.01em;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 0 20px;
+}
+
+.hero-content {
+    will-change: transform, opacity;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    margin-bottom: 10px;
+    /* High contrast gradient */
+    background: linear-gradient(180deg, #ffffff, #86868b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Section Layouts */
+section {
+    padding: 120px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: 60px;
+    text-align: center;
+    will-change: transform, opacity;
+}
+
+/* Philosophy / About */
+.philosophy {
+    text-align: center;
+}
+
+.philosophy p {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.philosophy p strong {
+    color: var(--text-main);
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 40px 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, border-color 0.4s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(255, 255, 255, 0.1); /* Slightly brighter on hover */
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.skill-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.skill-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Experience Timeline */
+.experience-item {
+    border-left: 2px solid var(--border-color);
+    padding-left: 30px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.experience-item::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--text-main);
+}
+
+.experience-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.experience-item .date {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.experience-item p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 60px 20px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 100px;
+    will-change: transform, opacity;
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--text-main); /* White button */
+    color: var(--bg-color); /* Black text */
+    padding: 12px 24px;
+    border-radius: 24px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Basic Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 0.05s; }
+.stagger-2 { transition-delay: 0.1s; }
+.stagger-3 { transition-delay: 0.15s; }
+.stagger-4 { transition-delay: 0.2s; }
