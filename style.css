@@ -1,12 +1,13 @@
 :root {
-    /* TRUE DARK MODE */
-    --bg-color: #000000; 
-    --text-main: #ffffff; 
-    --text-muted: #86868b; 
-    --accent: #2997ff; 
-    --nav-bg: rgba(0, 0, 0, 0.75); 
-    --card-bg: rgba(255, 255, 255, 0.05);
-    --border-color: rgba(255, 255, 255, 0.1);
+    --bg-color: #0B1021; /* Deep midnight blue */
+    --text-main: #F8FAFC; /* Crisp cool white */
+    --text-muted: #94A3B8; /* Slate gray */
+    --accent: #38BDF8; /* Electric light blue */
+    --nav-bg: rgba(11, 16, 33, 0.75); 
+    
+    --card-bg: rgba(255, 255, 255, 0.03); 
+    --border-color: rgba(255, 255, 255, 0.08); 
+    --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.2); 
 }
 
 * {
