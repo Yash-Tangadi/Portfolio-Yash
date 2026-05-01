@@ -1,21 +1,25 @@
 :root {
-    /* --- APPLE LIGHT THEME --- */
-    --bg-color: #f5f5f7; 
-    --text-main: #1d1d1f; 
-    --text-muted: #86868b; 
-    --accent: #0066cc; 
-    --nav-bg: rgba(245, 245, 247, 0.85); 
+    /* --- SOFT DARK THEME (Eye-pleasing & Professional) --- */
+    --bg-color: #121418; 
+    --text-main: #e2e8f0; 
+    --text-muted: #94a3b8; 
+    --accent: #38bdf8; 
+    --nav-bg: rgba(18, 20, 24, 0.85); 
     
     /* FIX: Solidified card background to stop scroll-wheel rendering lag */
-    --card-bg: rgba(255, 255, 255, 0.95); 
-    --border-color: rgba(0, 0, 0, 0.05); 
-    --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.04); 
+    --card-bg: rgba(30, 34, 42, 0.95); 
+    --border-color: rgba(255, 255, 255, 0.08); 
+    --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.25); 
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body, html {
@@ -129,6 +133,19 @@ nav a:hover {
     color: var(--accent); 
 }
 
+.nav-resume-btn {
+    border: 1px solid var(--accent);
+    padding: 6px 16px;
+    border-radius: 20px;
+    color: var(--accent) !important;
+    transition: all 0.3s ease;
+}
+
+.nav-resume-btn:hover {
+    background: var(--accent);
+    color: #121418 !important;
+}
+
 /* Hero Section */
 .hero {
     height: 100vh; 
@@ -167,6 +184,42 @@ nav a:hover {
     margin: 0 auto;
 }
 
+.availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    color: var(--accent);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 35px;
+}
+
 /* Section Layouts */
 section {
     padding: 100px 20px;
@@ -183,6 +236,13 @@ section {
     margin-bottom: 50px;
     text-align: center;
     color: var(--text-main);
+}
+
+/* Mobile responsive section padding to avoid empty gaps */
+@media screen and (max-width: 768px) {
+    section {
+        padding: 60px 20px;
+    }
 }
 
 /* Philosophy */
@@ -208,7 +268,7 @@ section {
 
 .skill-card {
     background: var(--card-bg);
-    border: 1px solid rgba(255,255,255,0.9); 
+    border: 1px solid var(--border-color); 
     border-radius: 20px; 
     padding: 40px 24px;
     text-align: center;
@@ -220,7 +280,7 @@ section {
 @media (hover: hover) {
     .skill-card:hover {
         transform: translateY(-6px);
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08); 
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4); 
     }
 }
 
@@ -239,7 +299,7 @@ section {
 
 /* Experience Timeline */
 .experience-item {
-    border-left: 2px solid rgba(0,0,0,0.1);
+    border-left: 2px solid var(--border-color);
     padding-left: 30px;
     margin-bottom: 50px;
     position: relative;
@@ -304,9 +364,10 @@ footer {
 
 .cta-button {
     display: inline-block;
-    background: var(--text-main); 
-    color: #ffffff; 
+    background: var(--accent); 
+    color: #121418; 
     padding: 16px 32px;
+    border: 2px solid transparent;
     border-radius: 40px; 
     text-decoration: none;
     font-weight: 600;
@@ -317,12 +378,25 @@ footer {
 @media (hover: hover) {
     .cta-button:hover {
         transform: scale(1.04);
-        background: #333336; 
+        background: #7dd3fc; 
     }
 }
 
 .cta-button:active {
     transform: scale(0.96);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--text-main);
+}
+
+@media (hover: hover) {
+    .secondary-btn:hover {
+        background: rgba(56, 189, 248, 0.1); 
+        transform: scale(1.04);
+    }
 }
 
 /* --- CSS ANIMATIONS --- */
@@ -346,6 +420,11 @@ footer {
 @media screen and (max-width: 480px) {
     nav ul { gap: 20px; }
     .skills-grid { grid-template-columns: 1fr; }
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
 }
 
 .social-icons {
@@ -358,11 +437,11 @@ footer {
 
 .social-icons a {
   font-size: 22px;
-  color: #aaa;
+  color: var(--text-muted);
   transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-  color: #6c63ff;
+  color: var(--accent);
   transform: translateY(-3px);
 }
