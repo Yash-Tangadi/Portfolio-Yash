@@ -243,6 +243,25 @@ section {
     section {
         padding: 60px 20px;
     }
+
+    /* Make navigation swipeable on mobile devices */
+    nav {
+        justify-content: flex-start;
+    }
+    nav ul {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0 20px;
+        scrollbar-width: none; /* Hides scrollbar on Firefox */
+        -ms-overflow-style: none; /* Hides scrollbar on IE/Edge */
+    }
+    nav ul::-webkit-scrollbar {
+        display: none; /* Hides scrollbar on Chrome/Safari */
+    }
+    nav li {
+        flex-shrink: 0; /* Prevents text from squishing together */
+    }
 }
 
 /* Philosophy */
