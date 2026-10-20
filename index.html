@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <meta name="description" content="Portfolio of Yash Tangadi, a Senior Java Backend Engineer building reliable, event-driven systems with Java, Spring Boot, Kafka and microservices.">
+    <meta name="color-scheme" content="dark light">
+    <meta name="description" content="Portfolio of Yash Tangadi, Senior Java Backend Engineer specializing in Java, Spring Boot, Kafka, microservices and enterprise integrations.">
     <meta name="author" content="Yash Tangadi">
-    <meta name="theme-color" content="#f7f8fb" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#070912">
 
     <title>Yash Tangadi | Senior Java Backend Engineer</title>
     <link rel="canonical" href="https://yash-tangadi.github.io/Portfolio-Yash/">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="css/styles.css">
 
     <meta property="og:type" content="website">
@@ -49,10 +49,15 @@
         }
     }
     </script>
-    <script src="js/main.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+    <script type="module" src="js/main.js"></script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
+    <div class="cursor-glow" aria-hidden="true" data-cursor-glow></div>
 
     <header class="site-header" data-header>
         <div class="container header-inner">
@@ -62,166 +67,294 @@
             </a>
 
             <div class="header-actions">
-                <button class="theme-toggle icon-button" type="button" aria-label="Switch to dark theme" data-theme-toggle>
-                    <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="4"></circle>
-                        <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
-                    </svg>
-                    <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
-                        <path d="M20.5 14.2A8.3 8.3 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"></path>
-                    </svg>
+                <button class="theme-toggle icon-button" type="button" aria-label="Switch to light theme" data-theme-toggle>
+                    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 14.2A8.3 8.3 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"></path></svg>
                 </button>
-
                 <button class="menu-toggle icon-button" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle>
                     <span></span><span></span><span></span>
                 </button>
             </div>
 
             <nav class="primary-navigation" id="primary-navigation" aria-label="Primary navigation" data-navigation>
-                <a href="#approach">Approach</a>
                 <a href="#expertise">Expertise</a>
+                <a href="#architecture">Architecture</a>
                 <a href="#experience">Experience</a>
-                <a href="#work">Beyond work</a>
+                <a href="#highlights">Highlights</a>
                 <a href="#contact">Contact</a>
-                <a class="nav-resume" href="Yash_Tangadi_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume <span aria-hidden="true">↗</span></a>
+                <a class="nav-resume" href="Yash_Tangadi_Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé <span aria-hidden="true">↗</span></a>
             </nav>
         </div>
     </header>
 
     <main id="main-content">
-        <section class="hero" id="home" aria-labelledby="hero-title">
-            <div class="container hero-grid">
+        <section class="hero" id="home" aria-labelledby="hero-title" data-hero>
+            <div class="hero-scene" aria-hidden="true">
+                <canvas data-hero-canvas></canvas>
+                <svg class="hero-fallback" viewBox="0 0 900 700" role="presentation">
+                    <defs>
+                        <linearGradient id="fallback-line" x1="0" x2="1"><stop stop-color="#6ee7f9"/><stop offset="1" stop-color="#9b7bff"/></linearGradient>
+                        <radialGradient id="fallback-node"><stop stop-color="#ffffff"/><stop offset=".2" stop-color="#6ee7f9"/><stop offset="1" stop-color="#6ee7f9" stop-opacity="0"/></radialGradient>
+                    </defs>
+                    <g class="fallback-links" fill="none" stroke="url(#fallback-line)" stroke-width="2" opacity=".34">
+                        <path d="M120 230 360 115 590 215 760 100"/><path d="M120 230 335 380 590 215 770 440"/><path d="M335 380 510 565 770 440"/><path d="M360 115 510 565"/>
+                    </g>
+                    <g fill="url(#fallback-node)"><circle cx="120" cy="230" r="64"/><circle cx="360" cy="115" r="52"/><circle cx="335" cy="380" r="72"/><circle cx="590" cy="215" r="60"/><circle cx="510" cy="565" r="50"/><circle cx="770" cy="440" r="78"/><circle cx="760" cy="100" r="44"/></g>
+                </svg>
+                <div class="scene-loader" data-scene-loader><span></span><span>Initializing system map</span></div>
+            </div>
+
+            <div class="container hero-content">
                 <div class="hero-copy">
-                    <!-- TODO: confirm current availability status. -->
-                    <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Available for new opportunities</p>
-                    <h1 id="hero-title">Backend systems built to stay reliable at scale.</h1>
-                    <p class="hero-intro">I’m Yash Tangadi, a Senior Java Backend Engineer focused on event-driven architecture, enterprise integrations and production-grade microservices.</p>
+                    <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Java backend systems engineer</p>
+                    <h1 id="hero-title"><span>Yash</span> <span>Tangadi</span></h1>
+                    <p class="role-line">I build <span data-rotating-role>event-driven systems.</span></p>
+                    <p class="hero-intro">Senior Java Backend Engineer.<br>Java · Spring Boot · Kafka · Enterprise integrations.</p>
                     <div class="hero-actions" role="group" aria-label="Primary actions">
-                        <a class="button button-primary" href="Yash_Tangadi_Resume.pdf" download>Download Resume</a>
-                        <a class="button button-secondary" href="#contact">Contact</a>
+                        <a class="button button-primary magnetic" href="Yash_Tangadi_Resume.pdf" download>Download Résumé <span aria-hidden="true">↓</span></a>
+                        <a class="button button-ghost magnetic" href="#contact">Contact <span aria-hidden="true">↗</span></a>
                     </div>
                 </div>
 
-                <aside class="hero-proof" aria-label="Technical focus">
-                    <p class="proof-label">Currently delivering with</p>
-                    <ul class="proof-list">
-                        <li><strong>Java 8 / 17 / 21</strong><span>Concurrent, maintainable services</span></li>
-                        <li><strong>Spring Boot</strong><span>Secure APIs and microservices</span></li>
-                        <li><strong>Apache Kafka</strong><span>Event-driven orchestration</span></li>
-                        <li><strong>Enterprise systems</strong><span>Banking and insurance integrations</span></li>
-                    </ul>
-                </aside>
-            </div>
-            <a class="scroll-cue" href="#approach" aria-label="Continue to approach">
-                <span>Explore</span><span aria-hidden="true">↓</span>
-            </a>
-        </section>
-
-        <section class="section section-intro" id="approach" aria-labelledby="approach-title">
-            <div class="container split-intro">
-                <div class="section-heading reveal">
-                    <p class="section-kicker">Approach</p>
-                    <h2 id="approach-title">Engineering for the real world.</h2>
-                </div>
-                <div class="lead-copy reveal">
-                    <p>I design backend systems around the things production exposes: unpredictable load, partial failures, complex integrations and the need to evolve safely.</p>
-                    <p>My work combines clear service boundaries, asynchronous workflows and pragmatic performance tuning—so systems remain understandable as they scale.</p>
+                <div class="hero-orbit-labels" aria-hidden="true">
+                    <span>JAVA 21</span><span>SPRING BOOT</span><span>KAFKA</span>
                 </div>
             </div>
+
+            <a class="scroll-cue" href="#approach" aria-label="Explore portfolio"><span></span>Scroll to explore</a>
         </section>
 
-        <section class="section" id="expertise" aria-labelledby="expertise-title">
+        <section class="section impact-section" id="approach" aria-labelledby="impact-title">
             <div class="container">
-                <div class="section-heading section-heading-wide reveal">
-                    <p class="section-kicker">Core expertise</p>
-                    <h2 id="expertise-title">From service design to dependable delivery.</h2>
-                    <p>Six areas I use together to solve high-volume backend problems.</p>
+                <div class="section-heading" data-reveal>
+                    <p class="section-kicker">Production impact</p>
+                    <h2 id="impact-title">Numbers that carry the story.</h2>
                 </div>
-
-                <div class="expertise-grid">
-                    <article class="expertise-card reveal"><span class="card-index" aria-hidden="true">01</span><h3>Java &amp; system design</h3><p>Concurrent, memory-conscious services using Java 8, 17 and 21, grounded in maintainable system boundaries.</p></article>
-                    <article class="expertise-card reveal"><span class="card-index" aria-hidden="true">02</span><h3>Spring Boot &amp; APIs</h3><p>Production-grade REST APIs and secure microservices for high-volume platforms and enterprise integrations.</p></article>
-                    <article class="expertise-card reveal"><span class="card-index" aria-hidden="true">03</span><h3>Distributed systems</h3><p>Resilient services designed for asynchronous processing, fault tolerance and operational clarity.</p></article>
-                    <article class="expertise-card reveal"><span class="card-index" aria-hidden="true">04</span><h3>Apache Kafka</h3><p>Event-driven workflows spanning cluster setup, partitioning, consumer groups and high-throughput processing.</p></article>
-                    <article class="expertise-card reveal"><span class="card-index" aria-hidden="true">05</span><h3>Data &amp; integrations</h3><p>MS SQL, Oracle, MySQL and critical integrations including UIDAI eKYC, NSDL PAN, SWIFT and financial APIs.</p></article>
-                    <article class="expertise-card reveal"><span class="card-index" aria-hidden="true">06</span><h3>Performance &amp; automation</h3><p>Multithreading, Hibernate tuning, ETL automation and workflow orchestration with Airflow and Linux.</p></article>
+                <div class="impact-grid" data-counter-group>
+                    <article class="impact-stat" data-reveal><strong><span data-counter="29">29</span>+</strong><p>Insurance products</p></article>
+                    <article class="impact-stat" data-reveal><strong><span data-counter="2">2</span>M+</strong><p>Daily transactions</p></article>
+                    <article class="impact-stat" data-reveal><strong><span data-counter="3">3</span></strong><p>Product companies</p></article>
+                    <article class="impact-stat" data-reveal><strong><span data-counter="4">4</span>+</strong><p>Years engineering</p></article>
                 </div>
             </div>
         </section>
 
-        <section class="section experience-section" id="experience" aria-labelledby="experience-title">
+        <section class="section expertise-section" id="expertise" aria-labelledby="expertise-title">
             <div class="container">
-                <div class="section-heading section-heading-wide reveal">
-                    <p class="section-kicker">Experience</p>
-                    <h2 id="experience-title">Building through complexity.</h2>
-                    <p>Backend delivery across insurance, data platforms and financial services.</p>
+                <div class="section-heading section-heading-wide" data-reveal>
+                    <p class="section-kicker">System toolkit</p>
+                    <h2 id="expertise-title">A backend stack built in layers.</h2>
+                    <p>Tap a cluster to inspect the engineering focus.</p>
                 </div>
 
-                <div class="timeline">
-                    <article class="timeline-item reveal">
-                        <div class="timeline-meta"><p class="timeline-period"><time datetime="2025-01">Jan 2025</time> — Present</p><p class="timeline-company">PNB MetLife</p></div>
-                        <div class="timeline-content">
-                            <h3>Deputy Manager — Technical Delivery</h3>
-                            <p>Own backend delivery for insurance journeys spanning customer onboarding, policy issuance and document dispatch.</p>
-                            <ul class="outcome-list"><li>Designed SWIFT XML generation across 29+ insurance products.</li><li>Architected Kafka-driven orchestration for policy documents and dispatch.</li><li>Integrated UIDAI eKYC, NSDL PAN, demographic authentication and Penny Drop APIs.</li></ul>
-                            <p class="tech-line">Java 17/21 · Spring Boot · Kafka · MS SQL Server · REST APIs · Linux</p>
+                <div class="tech-cluster-grid">
+                    <button class="tech-cluster tilt-card" type="button" aria-expanded="false" data-tech-card data-reveal>
+                        <span class="cluster-orbit" aria-hidden="true"></span>
+                        <span class="cluster-label">Core</span>
+                        <span class="tech-badges"><span><b aria-hidden="true">J</b>Java</span><span><b aria-hidden="true">S</b>Spring Boot</span></span>
+                        <strong>Production-ready service foundations</strong>
+                        <span class="cluster-detail">Concurrency, REST APIs and clean microservice boundaries.</span>
+                    </button>
+                    <button class="tech-cluster tilt-card" type="button" aria-expanded="false" data-tech-card data-reveal>
+                        <span class="cluster-orbit" aria-hidden="true"></span>
+                        <span class="cluster-label">Messaging</span>
+                        <span class="tech-badges"><span><b aria-hidden="true">K</b>Kafka</span><span><b aria-hidden="true">↯</b>Events</span></span>
+                        <strong>Asynchronous systems that keep moving</strong>
+                        <span class="cluster-detail">Partitions, consumers, orchestration and fault tolerance.</span>
+                    </button>
+                    <button class="tech-cluster tilt-card" type="button" aria-expanded="false" data-tech-card data-reveal>
+                        <span class="cluster-orbit" aria-hidden="true"></span>
+                        <span class="cluster-label">Data</span>
+                        <span class="tech-badges"><span><b aria-hidden="true">O</b>Oracle</span><span><b aria-hidden="true">P</b>PostgreSQL</span><span><b aria-hidden="true">M</b>MySQL</span></span>
+                        <strong>Data paths tuned for throughput</strong>
+                        <span class="cluster-detail">Migration, persistence and Hibernate performance tuning.</span>
+                    </button>
+                    <button class="tech-cluster tilt-card" type="button" aria-expanded="false" data-tech-card data-reveal>
+                        <span class="cluster-orbit" aria-hidden="true"></span>
+                        <span class="cluster-label">Tooling</span>
+                        <span class="tech-badges"><span><b aria-hidden="true">A</b>Airflow</span><span><b aria-hidden="true">L</b>Linux</span></span>
+                        <strong>Automation with operational clarity</strong>
+                        <span class="cluster-detail">ETL workflows, shell automation and dependable delivery.</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section architecture-section" id="architecture" aria-labelledby="architecture-title" data-architecture>
+            <div class="container">
+                <div class="section-heading section-heading-wide" data-reveal>
+                    <p class="section-kicker">Signature architecture</p>
+                    <h2 id="architecture-title">Events flow. Services stay decoupled.</h2>
+                    <p>A simplified production pattern—not a client system diagram.</p>
+                </div>
+
+                <div class="architecture-stage" data-reveal>
+                    <svg class="architecture-desktop" viewBox="0 0 1200 500" role="img" aria-labelledby="diagram-title diagram-desc">
+                        <title id="diagram-title">Event-driven backend architecture</title>
+                        <desc id="diagram-desc">Client requests pass through an API gateway and Spring Boot services into Kafka, then consumers persist results to a database.</desc>
+                        <defs>
+                            <linearGradient id="arch-gradient" x1="0" x2="1"><stop stop-color="#6ee7f9"/><stop offset="1" stop-color="#9b7bff"/></linearGradient>
+                            <filter id="node-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        </defs>
+                        <g class="arch-paths" fill="none" stroke="url(#arch-gradient)" stroke-width="3">
+                            <path id="path-a" d="M125 250H265"/><path id="path-b" d="M385 250H485"/><path id="path-c" d="M615 250H715"/><path id="path-d" d="M835 250H935"/><path id="path-e" d="M1055 250H1125"/>
+                        </g>
+                        <g class="arch-nodes">
+                            <g transform="translate(35 205)"><rect width="90" height="90" rx="24"/><text x="45" y="51">Client</text></g>
+                            <g transform="translate(265 195)"><rect width="120" height="110" rx="28"/><text x="60" y="50">API</text><text class="node-sub" x="60" y="72">Gateway</text></g>
+                            <g transform="translate(485 185)"><rect width="130" height="130" rx="34"/><text x="65" y="59">Spring</text><text class="node-sub" x="65" y="83">services</text></g>
+                            <g class="node-kafka" transform="translate(715 190)"><circle cx="60" cy="60" r="60"/><circle cx="60" cy="60" r="43"/><text x="60" y="66">Kafka</text></g>
+                            <g transform="translate(935 195)"><rect width="120" height="110" rx="28"/><text x="60" y="62">Consumers</text></g>
+                            <g transform="translate(1125 205)"><path d="M0 20c0-11 18-20 40-20s40 9 40 20v50c0 11-18 20-40 20S0 81 0 70Z"/><ellipse cx="40" cy="20" rx="40" ry="20"/><text x="40" y="53">DB</text></g>
+                        </g>
+                        <g class="arch-packets" fill="#ffffff" filter="url(#node-glow)">
+                            <circle r="5"><animateMotion dur="1.1s" repeatCount="indefinite"><mpath href="#path-a"/></animateMotion></circle>
+                            <circle r="5"><animateMotion dur="1.3s" begin="-.6s" repeatCount="indefinite"><mpath href="#path-b"/></animateMotion></circle>
+                            <circle r="6"><animateMotion dur="1s" begin="-.3s" repeatCount="indefinite"><mpath href="#path-c"/></animateMotion></circle>
+                            <circle r="5"><animateMotion dur="1.4s" begin="-.8s" repeatCount="indefinite"><mpath href="#path-d"/></animateMotion></circle>
+                            <circle r="5"><animateMotion dur="1.2s" begin="-.4s" repeatCount="indefinite"><mpath href="#path-e"/></animateMotion></circle>
+                        </g>
+                    </svg>
+
+                    <ol class="architecture-mobile">
+                        <li><span>01</span><strong>Client</strong></li><li><span>02</span><strong>API Gateway</strong></li><li><span>03</span><strong>Spring services</strong></li><li><span>04</span><strong>Kafka</strong></li><li><span>05</span><strong>Consumers</strong></li><li><span>06</span><strong>Database</strong></li>
+                    </ol>
+                    <div class="architecture-legend"><span><i></i>Request</span><span><i></i>Event</span><span><i></i>Persist</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section experience-section" id="experience" aria-labelledby="experience-title" data-experience>
+            <div class="container">
+                <div class="section-heading section-heading-wide" data-reveal>
+                    <p class="section-kicker">Experience journey</p>
+                    <h2 id="experience-title">Three teams. One backend trajectory.</h2>
+                </div>
+
+                <div class="journey">
+                    <div class="journey-rail" aria-hidden="true"><span data-journey-progress></span><i data-journey-marker></i></div>
+
+                    <article class="experience-stop" data-reveal>
+                        <div class="experience-date"><time datetime="2025-01">2025</time><span>Now</span></div>
+                        <div class="experience-card tilt-card">
+                            <p class="company">PNB MetLife</p><h3>Deputy Manager — Technical Delivery</h3>
+                            <ul class="visual-highlights"><li><span aria-hidden="true">◇</span>SWIFT XML · 29+ products</li><li><span aria-hidden="true">↯</span>Kafka async orchestration</li><li><span aria-hidden="true">⌁</span>UIDAI · NSDL · Penny Drop</li></ul>
+                            <button class="detail-button" type="button" data-detail-id="detail-pnb">View details <span aria-hidden="true">↗</span></button>
                         </div>
                     </article>
 
-                    <article class="timeline-item reveal">
-                        <div class="timeline-meta"><p class="timeline-period"><time datetime="2024-09">Sep 2024</time> — <time datetime="2025-01">Jan 2025</time></p><p class="timeline-company">Translab.io</p></div>
-                        <div class="timeline-content">
-                            <h3>Technical Specialist</h3>
-                            <p>Engineered a Java migration platform for complex transfers across PostgreSQL, MySQL, Oracle and MS SQL Server.</p>
-                            <ul class="outcome-list"><li>Designed scalable migration services with Spring Boot and Hibernate.</li><li>Orchestrated fault-tolerant data workflows with Apache Airflow.</li></ul>
-                            <p class="tech-line">Java · Spring Boot · Hibernate · Apache Airflow · Microservices</p>
+                    <article class="experience-stop" data-reveal>
+                        <div class="experience-date"><time datetime="2024-09">2024</time><span>Translab.io</span></div>
+                        <div class="experience-card tilt-card">
+                            <p class="company">Translab.io</p><h3>Technical Specialist</h3>
+                            <ul class="visual-highlights"><li><span aria-hidden="true">⇄</span>Cross-database migration</li><li><span aria-hidden="true">▦</span>Spring Boot microservices</li><li><span aria-hidden="true">⌁</span>Airflow orchestration</li></ul>
+                            <button class="detail-button" type="button" data-detail-id="detail-translab">View details <span aria-hidden="true">↗</span></button>
                         </div>
                     </article>
 
-                    <article class="timeline-item reveal">
-                        <div class="timeline-meta"><p class="timeline-period"><time datetime="2021-12">Dec 2021</time> — <time datetime="2024-09">Sep 2024</time></p><p class="timeline-company">Tata Consultancy Services</p></div>
-                        <div class="timeline-content">
-                            <h3>System Engineer</h3>
-                            <p>Owned backend development for SBI’s national tax-filing platform across high-volume financial workflows.</p>
-                            <ul class="outcome-list"><li>Built a multithreaded Java invoice-generation system.</li><li>Automated ETL workflows with shell scripting and tuned Hibernate ORM performance.</li><li>Delivered scalable REST APIs in an Agile engineering environment.</li></ul>
-                            <p class="tech-line">Java · Spring Boot · Hibernate · Oracle · Shell scripting · REST APIs</p>
+                    <article class="experience-stop" data-reveal>
+                        <div class="experience-date"><time datetime="2021-12">2021</time><span>TCS</span></div>
+                        <div class="experience-card tilt-card">
+                            <p class="company">Tata Consultancy Services</p><h3>System Engineer</h3>
+                            <ul class="visual-highlights"><li><span aria-hidden="true">₹</span>SBI tax platform</li><li><span aria-hidden="true">⚙</span>Multithreaded invoices</li><li><span aria-hidden="true">↯</span>ETL automation</li></ul>
+                            <button class="detail-button" type="button" data-detail-id="detail-tcs">View details <span aria-hidden="true">↗</span></button>
                         </div>
+                    </article>
+                </div>
+
+                <div hidden>
+                    <div id="detail-pnb" data-detail-title="PNB MetLife — Deputy Manager">
+                        <p>Own backend delivery for customer onboarding, policy issuance and document dispatch.</p>
+                        <ul><li>Designed SWIFT XML generation across 29+ insurance products.</li><li>Architected Kafka-driven policy-document orchestration.</li><li>Integrated UIDAI eKYC, NSDL PAN, demographic authentication and Penny Drop APIs.</li></ul>
+                        <p class="tech-line">Java 17/21 · Spring Boot · Kafka · MS SQL Server · Linux</p>
+                    </div>
+                    <div id="detail-translab" data-detail-title="Translab.io — Technical Specialist">
+                        <p>Engineered a Java migration platform across PostgreSQL, MySQL, Oracle and MS SQL Server.</p>
+                        <ul><li>Designed scalable Spring Boot migration services.</li><li>Orchestrated fault-tolerant data workflows with Apache Airflow.</li></ul>
+                        <p class="tech-line">Java · Spring Boot · Hibernate · Airflow · Microservices</p>
+                    </div>
+                    <div id="detail-tcs" data-detail-title="TCS — System Engineer">
+                        <p>Owned backend development for SBI’s national tax-filing platform.</p>
+                        <ul><li>Built a multithreaded Java invoice-generation system.</li><li>Automated ETL workflows and tuned Hibernate performance.</li><li>Delivered scalable REST APIs in an Agile team.</li></ul>
+                        <p class="tech-line">Java · Spring Boot · Hibernate · Oracle · Linux</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section highlights-section" id="highlights" aria-labelledby="highlights-title">
+            <div class="container">
+                <div class="section-heading section-heading-wide" data-reveal><p class="section-kicker">Selected systems</p><h2 id="highlights-title">Work you can understand at a glance.</h2></div>
+                <div class="project-grid">
+                    <article class="project-card tilt-card" data-reveal>
+                        <div class="mini-flow" aria-hidden="true"><span>29+</span><i></i><i></i><b>XML</b></div>
+                        <p class="project-index">01 · Integration</p><h3>SWIFT Integrator</h3><p>Policy XML across 29+ insurance products.</p>
+                        <ul class="tech-chips"><li>Java</li><li>Spring Boot</li><li>SWIFT</li></ul>
+                    </article>
+                    <article class="project-card tilt-card" data-reveal>
+                        <div class="mini-stream" aria-hidden="true"><span></span><span></span><span></span><b>K</b></div>
+                        <p class="project-index">02 · Messaging</p><h3>Document Orchestration</h3><p>Kafka-driven generation and policy dispatch.</p>
+                        <ul class="tech-chips"><li>Kafka</li><li>Java 21</li><li>Linux</li></ul>
+                    </article>
+                    <article class="project-card tilt-card" data-reveal>
+                        <div class="mini-invoice" aria-hidden="true"><i></i><i></i><i></i><strong>₹</strong></div>
+                        <p class="project-index">03 · Financial systems</p><h3>SBI Tax Backend</h3><p>High-volume invoices and tax workflows.</p>
+                        <ul class="tech-chips"><li>Java</li><li>Oracle</li><li>REST</li></ul>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="section" id="work" aria-labelledby="work-title">
+        <section class="section beyond-section" id="work" aria-labelledby="work-title">
             <div class="container">
-                <div class="section-heading section-heading-wide reveal"><p class="section-kicker">Beyond work</p><h2 id="work-title">A wider technical and creative perspective.</h2></div>
-                <div class="supporting-grid">
-                    <article class="supporting-card reveal"><p class="card-label">Education</p><h3>B.E. in Electronics &amp; Telecommunication Engineering</h3><p>Shivajirao S. Jondhale College of Engineering</p><p class="card-meta">2017 — 2021 · Mumbai</p></article>
-                    <article class="supporting-card supporting-card-accent reveal"><p class="card-label">Creator project</p><h3>Indian Gameology</h3><p>A YouTube project focused on cinematic, story-driven gaming content—from production and editing to discoverability and audience engagement.</p><a class="text-link" href="https://www.youtube.com/@IndianGameology" target="_blank" rel="noopener noreferrer">Visit the channel <span aria-hidden="true">↗</span></a></article>
+                <div class="section-heading section-heading-wide" data-reveal><p class="section-kicker">Beyond code</p><h2 id="work-title">Engineer by day. Storyteller after hours.</h2></div>
+                <div class="beyond-grid">
+                    <a class="creator-card magnetic" href="https://www.youtube.com/@IndianGameology" target="_blank" rel="noopener noreferrer" data-reveal>
+                        <span class="play-mark" aria-hidden="true"><i></i></span>
+                        <span><small>Creator project</small><strong>Indian Gameology</strong><em>Cinematic gaming stories</em></span>
+                        <span aria-hidden="true">↗</span>
+                    </a>
+                    <div class="education-row" data-reveal>
+                        <span class="education-mark" aria-hidden="true">E&amp;TC</span>
+                        <span><small>Education · 2017—2021</small><strong>B.E. Electronics &amp; Telecommunication</strong><em>Shivajirao S. Jondhale College of Engineering</em></span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-            <div class="container contact-grid">
-                <div class="section-heading reveal">
-                    <p class="section-kicker">Contact</p>
-                    <h2 id="contact-title">Let’s build something dependable.</h2>
-                    <p>Have a backend challenge, platform role or architecture problem worth discussing? I’d be glad to hear about it.</p>
-                    <a class="button button-primary" href="mailto:yashtangadi1999@gmail.com">Start a conversation</a>
+            <div class="contact-orb" aria-hidden="true"></div>
+            <div class="container contact-content">
+                <p class="section-kicker" data-reveal>Start a conversation</p>
+                <h2 id="contact-title" data-reveal>Build the next reliable system.</h2>
+                <p data-reveal>Backend role, architecture challenge or ambitious product—let’s talk.</p>
+                <div class="contact-actions" data-reveal>
+                    <a class="button button-primary pulse-cta magnetic" href="mailto:yashtangadi1999@gmail.com">Email Yash <span aria-hidden="true">↗</span></a>
+                    <button class="button button-ghost" type="button" data-copy-email="yashtangadi1999@gmail.com">Copy email</button>
                 </div>
-                <nav class="contact-links reveal" aria-label="Contact links">
-                    <a href="mailto:yashtangadi1999@gmail.com"><span><small>Email</small>yashtangadi1999@gmail.com</span><span aria-hidden="true">↗</span></a>
-                    <a href="https://www.linkedin.com/in/tangadi-yash/" target="_blank" rel="noopener noreferrer"><span><small>LinkedIn</small>tangadi-yash</span><span aria-hidden="true">↗</span></a>
-                    <a href="https://github.com/Yash-Tangadi" target="_blank" rel="noopener noreferrer"><span><small>GitHub</small>Yash-Tangadi</span><span aria-hidden="true">↗</span></a>
-                    <a href="https://www.youtube.com/@IndianGameology" target="_blank" rel="noopener noreferrer"><span><small>YouTube</small>Indian Gameology</span><span aria-hidden="true">↗</span></a>
-                    <a href="Yash_Tangadi_Resume.pdf" target="_blank" rel="noopener noreferrer"><span><small>Résumé</small>Open PDF</span><span aria-hidden="true">↗</span></a>
+                <nav class="social-dock" aria-label="Contact links" data-reveal>
+                    <a href="mailto:yashtangadi1999@gmail.com" aria-label="Email Yash"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6h18v12H3Z"/><path d="m3 7 9 7 9-7"/></svg><span>Email</span></a>
+                    <a href="https://www.linkedin.com/in/tangadi-yash/" target="_blank" rel="noopener noreferrer" aria-label="Yash Tangadi on LinkedIn"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 9v9M6 6v.01M10 18v-5a4 4 0 0 1 8 0v5M10 9v9"/></svg><span>LinkedIn</span></a>
+                    <a href="https://github.com/Yash-Tangadi" target="_blank" rel="noopener noreferrer" aria-label="Yash Tangadi on GitHub"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.5c0-1 .1-1.4-.5-2 2.5-.3 5-1.2 5-5.5a4.3 4.3 0 0 0-1.1-3c.1-.3.5-1.5-.1-3-1 0-3 1.2-3 1.2a10.5 10.5 0 0 0-5.5 0S7.8 4 6.8 4c-.6 1.5-.2 2.7-.1 3A4.3 4.3 0 0 0 5.5 10c0 4.3 2.6 5.2 5 5.5-.5.5-.6 1-.5 2V21"/></svg><span>GitHub</span></a>
+                    <a href="https://www.youtube.com/@IndianGameology" target="_blank" rel="noopener noreferrer" aria-label="Indian Gameology on YouTube"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12s0-4-1-5-4-1-8-1-7 0-8 1-1 5-1 5 0 4 1 5 4 1 8 1 7 0 8-1 1-5 1-5Z"/><path d="m10 9 5 3-5 3Z"/></svg><span>YouTube</span></a>
+                    <a href="Yash_Tangadi_Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Yash Tangadi résumé"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6Z"/><path d="M14 2v5h5M9 13h6M9 17h6"/></svg><span>Résumé</span></a>
                 </nav>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
-        <div class="container footer-inner"><p>© <span data-current-year>2026</span> Yash Tangadi</p><a href="#home">Back to top <span aria-hidden="true">↑</span></a></div>
+        <div class="container footer-inner"><p>© <span data-current-year>2026</span> Yash Tangadi</p><span>Java · Kafka · Systems</span><a href="#home">Back to top ↑</a></div>
     </footer>
+
+    <dialog class="detail-dialog" data-detail-dialog aria-labelledby="detail-dialog-title">
+        <div class="dialog-inner">
+            <button class="dialog-close icon-button" type="button" aria-label="Close details" data-dialog-close>×</button>
+            <p class="section-kicker">Experience detail</p>
+            <h2 id="detail-dialog-title" data-detail-dialog-title>Experience details</h2>
+            <div class="dialog-copy" data-detail-dialog-copy></div>
+        </div>
+    </dialog>
+
+    <div class="toast" role="status" aria-live="polite" aria-atomic="true" data-toast></div>
 </body>
 </html>
