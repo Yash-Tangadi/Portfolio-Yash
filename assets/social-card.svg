@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+    <title id="title">Yash Tangadi — Senior Java Backend Engineer</title>
+    <desc id="description">Portfolio social sharing card</desc>
+    <rect width="1200" height="630" fill="#0b1020"/>
+    <circle cx="1080" cy="80" r="300" fill="#315ed4" opacity=".22"/>
+    <path d="M0 510 350 160h170L50 630H0Z" fill="#315ed4" opacity=".12"/>
+    <rect x="84" y="76" width="72" height="72" rx="22" fill="#315ed4"/>
+    <text x="120" y="122" text-anchor="middle" fill="#fff" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="700">YT</text>
+    <text x="84" y="277" fill="#f3f5fb" font-family="Segoe UI,Arial,sans-serif" font-size="72" font-weight="700">Yash Tangadi</text>
+    <text x="84" y="354" fill="#a9b2c5" font-family="Segoe UI,Arial,sans-serif" font-size="34">Senior Java Backend Engineer</text>
+    <text x="84" y="436" fill="#86a6ff" font-family="Segoe UI,Arial,sans-serif" font-size="24" font-weight="600">Java · Spring Boot · Kafka · Microservices</text>
+</svg>
